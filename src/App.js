@@ -40,7 +40,7 @@ import MyPage from './pages/MyPage';
 import Login from './pages/Login';
 import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
-import FreeBoard2 from './pages/FreeBoard2'; 
+import FreeBoard from './pages/FreeBoard'; 
 import SignUp from './pages/SignUp';
 
 
@@ -55,8 +55,7 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
-                    
-                    <Route path="freeboard2" element={<FreeBoard2 />} />
+                    <Route path="freeboard" element={<FreeBoard />} />
                     <Route path="signup" element={<SignUp />} />
                 </Route>
             </Routes>
