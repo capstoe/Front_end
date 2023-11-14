@@ -55,7 +55,7 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
-                    <Route path="freeboard/:page" element={<FreeBoard />} />
+                    <Route path="freeboard" element={<FreeBoard />} />
                     <Route path="signup" element={<SignUp />} />
                 </Route>
             </Routes>
