@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FreeBoard2() {
+function FreeBoard() {
     return (
         <div>
             <h1 style={{ color: '#9EE5E9' }}>자유게시판</h1>
@@ -27,4 +27,4 @@ function FreeBoard2() {
     );
 }
 
-export default FreeBoard2;
+export default FreeBoard;
