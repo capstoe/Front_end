@@ -13,7 +13,7 @@ const FreeBoard = () => {
     // 게시물을 가져옵니다.
     const fetchArticles = async () => {
       try {
-        const response = await fetch("https://example.com/api/articles");
+        const response = await fetch("");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

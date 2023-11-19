@@ -1,31 +1,3 @@
-// function TuteeSearch() {
-//     return(
-//     <div>
-//       <h1>튜터 찾기</h1>
-//       <h3>검색어</h3>
-//     </div>
-//     );
-// }
-
-// export default TuteeSearch;
-
-// function TuteeSearch() {
-//     return (
-//         <div>
-//             <h1 style={{ color: '#9EE5E9' }}>튜터찾기</h1>
-//             <h3>검색어 </h3>
-//             <h3>희망지역 </h3>
-//             <h3>희망과목</h3>
-//             <h3>학생성별</h3>
-//             <div className="search-bar">
-//                 <input type="text" placeholder="검색하기" />
-//                 <button style={{ color: 'white', backgroundColor: '#9EE5E9' }}>검색</button>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default TuteeSearch;
 import {useState} from 'react';
 
 function TuteeSearch() {
