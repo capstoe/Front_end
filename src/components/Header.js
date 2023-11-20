@@ -4,6 +4,7 @@ import './Header.css'
 
 function Header() {
 
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const loggedInLinks = [
     <li key="logout"><NavLink to="/logout">로그아웃</NavLink></li>,

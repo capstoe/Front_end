@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+
 const FreeBoard = () => {
   const [articles, setArticles] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
