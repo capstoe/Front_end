@@ -5,11 +5,7 @@ function MyPage() {
     const [birthValue, setBirthValue] = useState('');
 
     const onClickHandler = () => {
-        // 검색 버튼 클릭 시 수행할 동작 추가
-        // 이 예제에서는 검색어(searchValue)를 사용할 수 있습니다.
-        // console.log('이름:', nameValue);
-        // console.log('출생년도:', birthValue);
-        //
+
         
     };
 

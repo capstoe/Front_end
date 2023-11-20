@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
@@ -47,5 +48,4 @@ function Header() {
     </div>
   );
 }
-
 export default Header;
