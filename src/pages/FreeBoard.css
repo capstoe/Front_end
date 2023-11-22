@@ -1,0 +1,27 @@
+/* FreeBoard.css */
+
+.container {
+    background-color: #9EE5E9;
+    padding: 20px;
+  }
+  
+  .board {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+  }
+  
+  .formContainer {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .input {
+    margin: 10px;
+  }
+  
+  .button {
+    background-color: #9EE5E9;
+  }
+  
