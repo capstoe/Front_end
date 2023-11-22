@@ -3,13 +3,10 @@ import {useState} from 'react';
 function TuteeSearch() {
     const [searchValue, setSearchValue] = useState('');
     const [subjectValue, setSubjectValue] = useState('');
-    // const [locationValue, setLocationValue] = useState('');
     
 
     const onClickHandler = () => {
         
-        // console.log('검색어:', searchValue);
-        // console.log('희망과목:', subjectValue);
         
     };
 
