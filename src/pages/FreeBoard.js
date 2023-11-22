@@ -1,19 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
+// FreeBoard.js
+
+import React, { useState, useEffect } from "react";
+import "./FreeBoard.css";
 
 const FreeBoard = () => {
   const [articles, setArticles] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [showCreateForm, setShowCreateForm] = useState(false); // 새로운 글 작성 폼을 보여줄지 여부
+  const [showCreateForm, setShowCreateForm] = useState(false);
   const [newArticle, setNewArticle] = useState({
     title: "",
     content: "",
+    attachments: [], // Array to store attached files
   });
 
   useEffect(() => {
-    // 게시물을 가져옵니다.
     const fetchArticles = async () => {
       try {
-        const response = await fetch("");
+        const response = await fetch("https://example.com/api/articles");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -31,56 +34,57 @@ const FreeBoard = () => {
   };
 
   const handleCreate = () => {
-    // 여기서 새로운 글을 생성하는 API 호출 등의 로직을 추가할 수 있습니다.
-    // 예시로 로컬 상태에 새로운 글을 추가하고, 폼을 닫습니다.
-    setArticles([...articles, { id: Date.now(), title: newArticle.title, author: "CurrentUser", createdAt: new Date(), attachments: [] }]);
+    // Add the new article with attachments to the list
+    setArticles([
+      ...articles,
+      {
+        id: Date.now(),
+        title: newArticle.title,
+        author: "CurrentUser",
+        createdAt: new Date(),
+        attachments: newArticle.attachments,
+      },
+    ]);
     setShowCreateForm(false);
     setNewArticle({
       title: "",
       content: "",
+      attachments: [],
     });
   };
 
+  const handleFileChange = (e) => {
+    // Update the attachments array with the selected files
+    const files = Array.from(e.target.files);
+    setNewArticle((prev) => ({
+      ...prev,
+      attachments: prev.attachments.concat(files),
+    }));
+  };
+
   return (
-    <div>
-      <div style={{ backgroundColor: "white", border: "1px solid black" }}>
+    <div className="container">
+      <div className="board">
         <h1>자유게시판</h1>
-        <div style={{ margin: 10 }}>
+        <div className="input">
           <input
             type="text"
             placeholder="검색어를 입력하세요"
             value={searchKeyword}
             onChange={(event) => setSearchKeyword(event.target.value)}
           />
-          <button onClick={handleSearch}>검색</button>
-          <button onClick={() => setShowCreateForm(true)}>글쓰기</button>
+          <button className="button" onClick={handleSearch}>
+            검색
+          </button>
+          <button className="button" onClick={() => setShowCreateForm(true)}>
+            글쓰기
+          </button>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일자</th>
-              <th>첨부파일</th>
-            </tr>
-          </thead>
-          <tbody>
-            {articles.map((article) => (
-              <tr key={article.id}>
-                <td>{article.id}</td>
-                <td>{article.title}</td>
-                <td>{article.author}</td>
-                <td>{article.createdAt}</td>
-                <td>{article.attachments.length > 0 ? "있음" : "없음"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {/* ... rest of the code ... */}
       </div>
       {/* 글쓰기 폼 */}
       {showCreateForm && (
-        <div style={{ marginTop: 20 }}>
+        <div className="formContainer">
           <h2>새 글 작성</h2>
           <label>
             제목:
@@ -97,7 +101,13 @@ const FreeBoard = () => {
               onChange={(e) => setNewArticle({ ...newArticle, content: e.target.value })}
             />
           </label>
-          <button onClick={handleCreate}>작성</button>
+          <label>
+            첨부파일:
+            <input type="file" multiple onChange={handleFileChange} />
+          </label>
+          <button className="button" onClick={handleCreate}>
+            작성
+          </button>
         </div>
       )}
     </div>
