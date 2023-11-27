@@ -1,17 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as yup from "yup";
-
-const schema = yup.object().shape({
-  id: yup.string().required('아이디를 입력하세요').min(6, '아이디는 최소 6자 이상이어야 합니다').max(20),
-  password: yup.string().required().min(8).max(20).matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|{}:"<>?,./;']+)/, "비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다."),
-  password2: yup.string().required().oneOf([yup.ref("password"), null], '비밀번호가 일치하지 않습니다'),
-  name: yup.string().required(),
-  phone: yup.string().required().matches(/^01[0-9]{8}$/),
-  email: yup.string().required().matches(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/),
-  birth: yup.string().required().min(4).max(6),
-  gender: yup.string().required(),
-});
 
 const SignUp = () => {
   const [values, setValues] = useState({
@@ -23,27 +11,63 @@ const SignUp = () => {
     email: "",
     birth: "",
     gender: "",
+    school: "",
+    authCode: "",
+    allConsent: false,
   });
 
+  useEffect(() => {
+    if (values.allConsent) {
+      setValues((prevValues) => ({
+        ...prevValues,
+        allConsentTerms: true,
+        allConsentMatching: true,
+        allConsentPrivacy: true,
+      }));
+    } else {
+      setValues((prevValues) => ({
+        ...prevValues,
+        allConsentTerms: false,
+        allConsentMatching: false,
+        allConsentPrivacy: false,
+      }));
+    }
+  }, [values.allConsent]);
+
+  const handleAllConsentChange = (e) => {
+    const { checked } = e.target;
+    setValues((prevValues) => ({
+      ...prevValues,
+      allConsent: checked,
+    }));
+  };
+
+  const handleSubConsentChange = (name, checked) => {
+    setValues((prevValues) => ({ ...prevValues, [name]: checked }));
+  };
+
   const onSubmit = (values, { setErrors }) => {
-    schema.validate(values, { abortEarly: false })
-      .then(() => {
-        // 유효성 검사 통과 시 실행할 코드 작성
-        // 회원가입 API 호출
-      })
-      .catch((err) => {
-        const errors = {};
-        err.inner.forEach(e => {
-          errors[e.path] = e.message;
-        });
-        setErrors(errors);
-      });
+    const errors = {};
+
+    if (!values.id) {
+      errors.id = "아이디를 입력하세요";
+    } else if (values.id.length < 6 || values.id.length > 20) {
+      errors.id = "아이디는 최소 6자 이상이어야 합니다";
+    }
+
+    // 나머지 필드에 대한 유효성 검사 추가
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+    } else {
+      // 회원가입 로직 추가
+      console.log("회원가입 성공!", values);
+    }
   };
 
   return (
     <Formik
       initialValues={values}
-      validationSchema={schema}
       onSubmit={onSubmit}
     >
       <Form>
@@ -130,6 +154,89 @@ const SignUp = () => {
             </label>
           </div>
           <ErrorMessage name="gender" component="div" className="error-message" />
+        </div>
+        <div>
+          <label htmlFor="school">재학 중인 학교</label>
+          <Field
+            name="school"
+            type="text"
+            placeholder="학교명을 입력해주세요"
+            required
+          />
+          <ErrorMessage name="school" component="div" className="error-message" />
+        </div>
+        <div>
+          <label htmlFor="phone">휴대폰 번호 인증</label>
+          <div>
+            <Field
+              type="text"
+              name="phone"
+              placeholder="휴대폰 번호를 입력 ('-' 제외 11자리 숫자만 입력)"
+              required
+            />
+            <button type="button" id="phone-auth-button">인증번호 요청</button>
+          </div>
+          <div>
+            <Field
+              type="text"
+              name="authCode"
+              placeholder="인증번호 입력"
+              required
+            />
+            <ErrorMessage name="authCode" component="div" className="error-message" />
+          </div>
+        </div>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              name="allConsent"
+              checked={values.allConsent}
+              onChange={handleAllConsentChange}
+              required
+            />
+            전체 동의
+          </label>
+          <div role="group" aria-labelledby="all-consent-group">
+            <label>
+              <Field
+                type="checkbox"
+                name="allConsentTerms"
+                checked={values.allConsentTerms}
+                onChange={() => handleSubConsentChange("allConsentTerms", !values.allConsentTerms)}
+                required
+              />
+              <span>
+                (필수) 이용약관 동의
+              </span>
+            </label>
+            <br />
+            <label>
+              <Field
+                type="checkbox"
+                name="allConsentMatching"
+                checked={values.allConsentMatching}
+                onChange={() => handleSubConsentChange("allConsentMatching", !values.allConsentMatching)}
+                required
+              />
+              <span>
+                (필수) 튜터링크 매칭 방식 및 규정 동의
+              </span>
+            </label>
+            <br />
+            <label>
+              <Field
+                type="checkbox"
+                name="allConsentPrivacy"
+                checked={values.allConsentPrivacy}
+                onChange={() => handleSubConsentChange("allConsentPrivacy", !values.allConsentPrivacy)}
+                required
+              />
+              <span>
+                (필수) 개인정보 취급방침 동의
+              </span>
+            </label>
+          </div>
         </div>
         <button type="submit">가입하기</button>
       </Form>
