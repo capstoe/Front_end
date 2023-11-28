@@ -1,5 +1,3 @@
-// FreeBoard.js
-
 import React, { useState, useEffect } from "react";
 import "./FreeBoard.css";
 
@@ -16,7 +14,7 @@ const FreeBoard = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("https://example.com/api/articles");
+        const response = await fetch();
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -74,7 +72,7 @@ const FreeBoard = () => {
             onChange={(event) => setSearchKeyword(event.target.value)}
           />
           <button className="button" onClick={handleSearch}>
-            검색
+            검색ㄴ
           </button>
           <button className="button" onClick={() => setShowCreateForm(true)}>
             글쓰기
