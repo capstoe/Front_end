@@ -1,25 +1,27 @@
+/* Header.css */
 .header {
     background: white;
     color: #333;
     padding: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; /* 좌우 여백을 최대로 확보 */
     align-items: center;
 }
-
-
 
 nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 20px; /* 리스트 항목 사이의 간격을 조정 */
 }
 
 nav li {
     cursor: pointer;
-    margin-right: 20px;
+}
+nav li {
+    margin-right: 20px; /* 각 리스트 항목 사이의 간격을 조정 */
+    cursor: pointer;
 }
 
 .search-bar input {
@@ -37,5 +39,7 @@ nav li {
 }
 
 .user-options a {
-    margin-right: 20px;
+    margin-right: 20px; /* 로그인 및 회원가입 링크 사이의 간격을 조정 */
 }
+
+/* 다른 Header 스타일 추가 */
