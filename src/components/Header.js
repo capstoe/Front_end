@@ -31,7 +31,7 @@ function Header() {
           <li><NavLink to="/tutorsearch">튜터찾기</NavLink></li>
           <li><NavLink to="/tuteesearch">튜티찾기</NavLink></li>
           <li><NavLink to="/freeboard">자유게시판</NavLink></li>
-          <li><input type="text" placeholder="검색" /></li>
+          <li><input type="text"  id="search" name="search" placeholder="검색" /></li>
           {isLoggedIn ? (
             <>
               <li onClick={handleLogout} style={style}>로그아웃</li>

@@ -68,7 +68,6 @@ const SignUp = () => {
   return (
     <Formik
       initialValues={values}
-      onSubmit={onSubmit}
     >
       <Form>
         <div>
