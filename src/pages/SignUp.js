@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-
+import * as yup from "yup";
 
 const SignUp = () => {
   const [values, setValues] = useState({
@@ -15,6 +15,14 @@ const SignUp = () => {
     school: "",
     authCode: "",
     allConsent: false,
+  });
+
+  const validationSchema = yup.object().shape({
+    id: yup.string().required('아이디를 입력하세요').min(6, '아이디는 최소 6자 이상이어야 합니다').max(20),
+    password: yup.string().required('비밀번호를 입력하세요').min(8, '비밀번호는 최소 8자 이상이어야 합니다').max(20).matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|{}:"<>?,./;']+)/, "비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다."),
+    password2: yup.string().required('비밀번호를 다시 입력하세요').oneOf([yup.ref('password'), null], '비밀번호가 일치하지 않습니다'),
+    name: yup.string().required('이름을 입력하세요')
+  });
 
   useEffect(() => {
     if (values.allConsent) {
@@ -68,7 +76,8 @@ const SignUp = () => {
   return (
     <Formik
       initialValues={values}
-
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
     >
       <Form>
         <div>

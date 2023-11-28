@@ -7,13 +7,6 @@ import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
 import SignUp from './pages/SignUp';
-<<<<<<< HEAD
-import Findid from './pages/Findid';
-import Findpw from './pages/Findpw';
-import PostForm from './pages/PostForm';
-=======
->>>>>>> 8c616afb97789f447f5a301dc21aaa1ff485bc4e
-
 
 function App() {
     return (
@@ -28,12 +21,7 @@ function App() {
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
                     <Route path="signup" element={<SignUp />} />
-<<<<<<< HEAD
-                    <Route path="findid" element={<Findid />} />
-                    <Route path="findpw" element={<Findpw />} />
-                    <Route path="postform" element={<PostForm />} />
-=======
->>>>>>> 8c616afb97789f447f5a301dc21aaa1ff485bc4e
+
                 </Route>
             </Routes>
         </BrowserRouter>
