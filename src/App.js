@@ -8,7 +8,6 @@ import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
 import SignUp from './pages/SignUp';
 
-
 function App() {
     return (
         <BrowserRouter>
@@ -22,6 +21,7 @@ function App() {
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
                     <Route path="signup" element={<SignUp />} />
+
                 </Route>
             </Routes>
         </BrowserRouter>
