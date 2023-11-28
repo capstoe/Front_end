@@ -6,7 +6,7 @@ function Layout() {
         <>
             <Header/>
             <Outlet/>
-
+            {/* footer */}
         </>
     );
 }

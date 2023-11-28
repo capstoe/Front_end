@@ -72,7 +72,7 @@ const FreeBoard = () => {
             onChange={(event) => setSearchKeyword(event.target.value)}
           />
           <button className="button" onClick={handleSearch}>
-            검색
+            검색ㄴ
           </button>
           <button className="button" onClick={() => setShowCreateForm(true)}>
             글쓰기

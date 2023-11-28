@@ -7,8 +7,6 @@ import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
 import SignUp from './pages/SignUp';
-import Findid from './pages/Findid';
-import Findpw from './pages/Findpw';
 
 
 function App() {
@@ -24,8 +22,6 @@ function App() {
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
                     <Route path="signup" element={<SignUp />} />
-                    <Route path="findid" element={<Findid />} />
-                    <Route path="findpw" element={<Findpw />} />
                 </Route>
             </Routes>
         </BrowserRouter>
