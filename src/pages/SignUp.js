@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+
 const SignUp = () => {
   const [values, setValues] = useState({
     id: "",
@@ -14,7 +15,6 @@ const SignUp = () => {
     school: "",
     authCode: "",
     allConsent: false,
-  });
 
   useEffect(() => {
     if (values.allConsent) {
@@ -68,6 +68,7 @@ const SignUp = () => {
   return (
     <Formik
       initialValues={values}
+
     >
       <Form>
         <div>
