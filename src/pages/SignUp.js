@@ -24,6 +24,7 @@ const SignUp = () => {
     name: yup.string().required('이름을 입력하세요')
   });
 
+
   useEffect(() => {
     if (values.allConsent) {
       setValues((prevValues) => ({
