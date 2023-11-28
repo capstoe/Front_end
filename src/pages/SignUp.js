@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import '../apis/SuAPI';
 
 const SignUp = () => {
   const [values, setValues] = useState({
