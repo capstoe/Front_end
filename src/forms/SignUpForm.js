@@ -29,7 +29,6 @@ function SignUpForm() {
             <input type="text" name="username" value={userData.username} onChange={handleInputChange} placeholder="사용자명" />
             <input type="email" name="email" value={userData.email} onChange={handleInputChange} placeholder="이메일" />
             <input type="password" name="password" value={userData.password} onChange={handleInputChange} placeholder="비밀번호" />
-            {/* 다른 입력 필드들 추가 */}
             <button type="submit">가입하기</button>
         </form>
     );
