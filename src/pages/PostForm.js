@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
+import './PostForm.css';
 
 const PostForm = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [formData, setFormData] = useState({
+    title: '',
+    content: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 여기에 제출 로직을 추가하세요.
-    console.log(`제목: ${title}, 내용: ${content}`);
+    console.log('Form data submitted:', formData);
   };
 
   return (
-    <div>
-      <h1>게시판 글쓰기</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          제목:
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </label>
-        <label>
-          내용:
-          <textarea value={content} onChange={(e) => setContent(e.target.value)} />
-        </label>
-        <button type="submit">작성</button>
-        <button type="button" onClick={() => {setTitle(''); setContent('');}}>취소</button>
-      </form>
-    </div>
+    <form className="post-form" onSubmit={handleSubmit}>
+      <label>
+        제목:
+        <input type="text" name="title" value={formData.title} onChange={handleChange} />
+      </label>
+      <br />
+      <label>
+        내용:
+        <textarea name="content" value={formData.content} onChange={handleChange}></textarea>
+      </label>
+      <br />
+      <button type="submit">제출</button>
+    </form>
   );
 };
 

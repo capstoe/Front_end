@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
+import PostForm from './pages/PostForm'; // Assuming PostForm is in the same directory
 import SignUp from './pages/SignUp';
 
 function App() {
@@ -20,8 +21,9 @@ function App() {
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
+                    <Route path="postform" element={<PostForm />} /> {/* Add this line */}
                     <Route path="signup" element={<SignUp />} />
-
+                    <Route path="create" element={<PostForm />} />
                 </Route>
             </Routes>
         </BrowserRouter>

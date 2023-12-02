@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import "./FreeBoard.css";
+import PostForm from './PostForm'; // Assuming PostForm is in the same directory
 
 const FreeBoard = () => {
   const [articles, setArticles] = useState([]);
@@ -10,6 +12,7 @@ const FreeBoard = () => {
     content: "",
     attachments: [], // Array to store attached files
   });
+
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -72,42 +75,16 @@ const FreeBoard = () => {
             onChange={(event) => setSearchKeyword(event.target.value)}
           />
           <button className="button" onClick={handleSearch}>
-            검색ㄴ
+            검색
           </button>
-          <button className="button" onClick={() => setShowCreateForm(true)}>
-            글쓰기
-          </button>
+          <Link to="/create">
+            <button className="button">
+              글쓰기
+            </button>
+          </Link>
         </div>
         {/* ... rest of the code ... */}
       </div>
-      {/* 글쓰기 폼 */}
-      {showCreateForm && (
-        <div className="formContainer">
-          <h2>새 글 작성</h2>
-          <label>
-            제목:
-            <input
-              type="text"
-              value={newArticle.title}
-              onChange={(e) => setNewArticle({ ...newArticle, title: e.target.value })}
-            />
-          </label>
-          <label>
-            내용:
-            <textarea
-              value={newArticle.content}
-              onChange={(e) => setNewArticle({ ...newArticle, content: e.target.value })}
-            />
-          </label>
-          <label>
-            첨부파일:
-            <input type="file" multiple onChange={handleFileChange} />
-          </label>
-          <button className="button" onClick={handleCreate}>
-            작성
-          </button>
-        </div>
-      )}
     </div>
   );
 };
