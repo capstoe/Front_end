@@ -1,7 +1,5 @@
-
-
 export function signUpUser(userData) {
-    const requestURL = 'http://localhost:8080'; // 여기에 회원가입 API 주소를 넣어주세요
+    const requestURL = "http://localhost:8080/error/signin"; 
 
     return async function SignUp(_dispatch, _getState) {
         try {
