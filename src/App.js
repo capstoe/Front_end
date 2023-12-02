@@ -21,7 +21,6 @@ function App() {
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
-                    {/* <Route path="signup1" element={<SignUp1 />} /> */}
                     <Route path="signup" element={<SignUp />} />
                 </Route>
             </Routes>
