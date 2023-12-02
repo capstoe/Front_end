@@ -1,5 +1,3 @@
-// FreeBoard.js
-
 import React, { useState, useEffect } from "react";
 import "./FreeBoard.css";
 
@@ -10,7 +8,7 @@ const FreeBoard = () => {
   const [newArticle, setNewArticle] = useState({
     title: "",
     content: "",
-    attachments: [], // Array to store attached files
+    attachments: [],
   });
 
   useEffect(() => {
