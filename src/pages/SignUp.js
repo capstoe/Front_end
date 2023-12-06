@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import './SignUp.css';
+
 
 
 const SignUp = () => {
@@ -80,7 +82,7 @@ const SignUp = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <Form>
+      <Form className="form">
         <div>
           <label htmlFor="id">아이디</label>
           <Field
