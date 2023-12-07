@@ -7,7 +7,7 @@ import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
 import SignUp1 from './pages/SignUp1';
-import SignUp from './pages/SignUp';
+
 
 function App() {
     return (
@@ -21,8 +21,7 @@ function App() {
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
-                    {/* <Route path="signup1" element={<SignUp1 />} /> */}
-                    <Route path="signup" element={<SignUp />} />
+                    <Route path="signup1" element={<SignUp1 />} />
                 </Route>
             </Routes>
         </BrowserRouter>
