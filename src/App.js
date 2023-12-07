@@ -6,8 +6,9 @@ import Login from './pages/Login';
 import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
-import PostForm from './pages/PostForm'; // Assuming PostForm is in the same directory
+import PostForm from './pages/PostForm'; 
 import SignUp from './pages/SignUp';
+
 
 function App() {
     return (
