@@ -21,7 +21,7 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="post-form" onSubmit={handleSubmit}>
       <label>
         제목:
         <input type="text" name="title" value={formData.title} onChange={handleChange} />
