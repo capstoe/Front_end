@@ -9,6 +9,7 @@ import FreeBoard from './pages/FreeBoard';
 import PostForm from './pages/PostForm'; 
 import SignUp from './pages/SignUp';
 
+
 function App() {
     return (
         <BrowserRouter>

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signUpUser } from '../apis/APICalls'; // 회원가입 API 호출 함수
+
 
 function SignUpForm() {
     const [userData, setUserData] = useState({
