@@ -28,14 +28,10 @@
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1.2em;
-  background-color: #4CAF50; /* Green */
+  background-color: #9EE5E9;
   border: none;
   color: white;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-}
-
-.post-form button:hover {
-  background-color: #45a049;
 }
