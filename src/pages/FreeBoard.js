@@ -115,8 +115,13 @@
 // export default FreeBoard;
 
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
+import { Link } from 'react-router-dom';
+=======
 import axios from "axios";
+>>>>>>> main
 import "./FreeBoard.css";
+import PostForm from './PostForm'; // Assuming PostForm is in the same directory
 
 const FreeBoard = () => {
   const [articles, setArticles] = useState([]);
@@ -125,6 +130,7 @@ const FreeBoard = () => {
     content: "",
     // other fields
   });
+
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -153,7 +159,63 @@ const FreeBoard = () => {
     }
   };
 
+<<<<<<< HEAD
+  const handleCreate = () => {
+    // Add the new article with attachments to the list
+    setArticles([
+      ...articles,
+      {
+        id: Date.now(),
+        title: newArticle.title,
+        author: "CurrentUser",
+        createdAt: new Date(),
+        attachments: newArticle.attachments,
+      },
+    ]);
+    setShowCreateForm(false);
+    setNewArticle({
+      title: "",
+      content: "",
+      attachments: [],
+    });
+  };
+
+  const handleFileChange = (e) => {
+    // Update the attachments array with the selected files
+    const files = Array.from(e.target.files);
+    setNewArticle((prev) => ({
+      ...prev,
+      attachments: prev.attachments.concat(files),
+    }));
+  };
+
+  return (
+    <div className="container">
+      <div className="board">
+        <h1>자유게시판</h1>
+        <div className="input">
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={searchKeyword}
+            onChange={(event) => setSearchKeyword(event.target.value)}
+          />
+          <button className="button" onClick={handleSearch}>
+            검색
+          </button>
+          <Link to="/create">
+            <button className="button">
+              글쓰기
+            </button>
+          </Link>
+        </div>
+        {/* ... rest of the code ... */}
+      </div>
+    </div>
+  );
+=======
   // ... (기타 함수 및 JSX 코드)
+>>>>>>> main
 };
 
 export default FreeBoard;
