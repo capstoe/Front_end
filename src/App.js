@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
-import SignUp1 from './pages/SignUp1';
+//import SignUp1 from './pages/SignUp1';
 import SignUp from './pages/SignUp';
 
 function App() {
