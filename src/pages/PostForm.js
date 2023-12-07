@@ -21,17 +21,13 @@ const PostForm = () => {
   };
 
   return (
-    <form className="post-form" onSubmit={handleSubmit}>
-      <label>
-        제목:
+
         <input type="text" name="title" value={formData.title} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        내용:
+      </div>
+      <div className="form-group">
+        <label htmlFor="content">내용:</label>
         <textarea name="content" value={formData.content} onChange={handleChange}></textarea>
-      </label>
-      <br />
+      </div>
       <button type="submit">제출</button>
     </form>
   );
