@@ -13,8 +13,12 @@
 .login-header {
     font-size: 2rem;
     font-weight: bold;
-    color: black;
+    columns: #9EE5E9;
     margin: 10px 0;
+}
+
+.login-header h1{
+    color: #9EE5E9;
 }
 
 .input-container {

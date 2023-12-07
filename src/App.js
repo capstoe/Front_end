@@ -9,7 +9,6 @@ import FreeBoard from './pages/FreeBoard';
 import PostForm from './pages/PostForm'; 
 import SignUp from './pages/SignUp';
 
-
 function App() {
     return (
         <BrowserRouter>
@@ -22,7 +21,7 @@ function App() {
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
-                    <Route path="postform" element={<PostForm />} /> {/* Add this line */}
+                    <Route path="postform" element={<PostForm />} /> {/* Add  */}
                     <Route path="signup" element={<SignUp />} />
                     <Route path="create" element={<PostForm />} />
                 </Route>
