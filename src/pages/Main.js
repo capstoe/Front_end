@@ -14,22 +14,20 @@ function Main() {
             <h1>검증된 튜터</h1>
             <div className="profiles-container">
                 <Profile
-                    imageSrc="url_to_image1.jpg"
+                    imageSrc="https://example.com/귀여운사진1.jpg"
                     text="서울대 경영학과"
                 />
                 <Profile
-                    imageSrc="url_to_image2.jpg"
+                    imageSrc="https://example.com/귀여운사진2.jpg"
                     text="연세대 경영학과"
                 />
                 <Profile
-                    imageSrc="url_to_image3.jpg"
+                    imageSrc="https://example.com/귀여운사진3.jpg"
                     text="고려대 경영학과"
                 />
             <h1>튜터링크 게시판 물어보세요!</h1>
             </div>
         </div>
-
-        
     );
 }
 

@@ -6,8 +6,10 @@ import Login from './pages/Login';
 import TutorSearch from './pages/TutorSearch';
 import TuteeSearch from './pages/TuteeSearch';
 import FreeBoard from './pages/FreeBoard'; 
-import PostForm from './pages/PostForm'; // Assuming PostForm is in the same directory
+import PostForm from './pages/PostForm'; 
 import SignUp from './pages/SignUp';
+import FindPw from './pages/Findpw'; 
+import Findid from './pages/Findid';
 
 function App() {
     return (
@@ -21,8 +23,10 @@ function App() {
                     <Route path="tutorsearch" element={<TutorSearch />} />
                     <Route path="tuteesearch" element={<TuteeSearch />} />
                     <Route path="freeboard" element={<FreeBoard />} />
-                    <Route path="postform" element={<PostForm />} /> {/* Add this line */}
+                    <Route path="postform" element={<PostForm />} /> 
                     <Route path="signup" element={<SignUp />} />
+                    <Route path="findpw" element={<FindPw />} />
+                    <Route path="findid" element={<Findid />} />
                     <Route path="create" element={<PostForm />} />
                 </Route>
             </Routes>
