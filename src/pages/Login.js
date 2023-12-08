@@ -54,7 +54,7 @@ function Login() {
                 <div className="login-links">
                     <NavLink to="/signup">회원가입하기</NavLink>
                     <NavLink to="/findid">아이디찾기</NavLink>
-                    <NavLink to="/findpw">비밀번호 찾기</NavLink>
+                    <NavLink to="/Findpw">비밀번호 찾기</NavLink>
                 </div>
             </Form>
         </Formik>
