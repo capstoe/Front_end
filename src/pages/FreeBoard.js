@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import "./FreeBoard.css";
-import PostForm from './PostForm'; // Assuming PostForm is in the same directory
 
 const FreeBoard = () => {
   const [articles, setArticles] = useState([]);
@@ -77,7 +76,7 @@ const FreeBoard = () => {
           <button className="button" onClick={handleSearch}>
             검색
           </button>
-          <Link to="/create">
+          <Link to="/postform">
             <button className="button">
               글쓰기
             </button>
