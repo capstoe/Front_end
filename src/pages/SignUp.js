@@ -177,27 +177,7 @@ const SignUp = () => {
           />
           <ErrorMessage name="school" component="div" className="error-message" />
         </div>
-        <div>
-          <label htmlFor="phone">휴대폰 번호 인증</label>
-          <div>
-            <Field
-              type="text"
-              name="phone"
-              placeholder="휴대폰 번호를 입력 ('-' 제외 11자리 숫자만 입력)"
-              required
-            />
-            <button type="button" id="phone-auth-button">인증번호 요청</button>
-          </div>
-          <div>
-            <Field
-              type="text"
-              name="authCode"
-              placeholder="인증번호 입력"
-              required
-            />
-            <ErrorMessage name="authCode" component="div" className="error-message" />
-          </div>
-        </div>
+        
         <div>
           <label>
             <input
