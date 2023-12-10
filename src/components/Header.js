@@ -75,6 +75,7 @@ function Header() {
             <>
               <li><NavLink to="/login" style={linkStyle}>로그인</NavLink></li>
               <li><NavLink to="/signup" style={linkStyle}>회원가입</NavLink></li>
+              <li><NavLink to="/Tutorsignup" style={linkStyle}>튜터SignUp</NavLink></li>
             </>
           )}
         </ul>

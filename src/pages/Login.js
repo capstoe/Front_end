@@ -40,7 +40,7 @@ function Login() {
     window.localStorage.setItem("data3", JSON.stringify(value));
     console.log(value);
     axios
-      .post("http://43.200.252.239:53702/api/signin", value, { header })
+      .post("api2/signin", value, { header }) // setupProxy.js
       .then((response) => {
         console.log(response.data);
         window.localStorage.setItem("token2", JSON.stringify(response.data));

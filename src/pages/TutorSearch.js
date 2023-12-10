@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import "./TutorSearch.css";
 function TutorSearch() {
     const [searchValue, setSearchValue] = useState('');
     const [subjectValue, setSubjectValue] = useState('');
