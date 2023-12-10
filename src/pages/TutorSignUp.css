@@ -1,0 +1,63 @@
+.TutorSignUp .form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+  }
+  
+  .TutorSignUp .form label {
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+  
+  .TutorSignUp .form input[type="text"],
+  .TutorSignUp .form textarea,
+  .TutorSignUp .form input[type="date"],
+  .TutorSignUp .form input[type="email"],
+  .TutorSignUp .form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .TutorSignUp .form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #9EE5E9;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .TutorSignUp .form button:hover {
+    background-color: #9EE5E9;
+  }
+  
+  .TutorSignUp .error-message {
+    color: red;
+    font-size: 0.875em;
+  }
+  
+  .TutorSignUp .form .radio-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .TutorSignUp .form .radio-group label {
+    margin-right: 10px;
+  }
+  
+  .TutorSignUp .form .checkbox-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .TutorSignUp .form .checkbox-group label {
+    margin: 5px 0;
+  }
+  

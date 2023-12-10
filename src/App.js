@@ -10,6 +10,7 @@ import PostForm from './pages/PostForm';
 import SignUp from './pages/SignUp';
 import FindPw from './pages/Findpw'; 
 import Findid from './pages/Findid';
+import TutorSignUp from './pages/TutorSignUp';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                     <Route path="findpw" element={<FindPw />} />
                     <Route path="findid" element={<Findid />} />
                     <Route path="create" element={<PostForm />} />
+                    <Route path="tutorsignup" element={<TutorSignUp />} />
                 </Route>
             </Routes>
         </BrowserRouter>
