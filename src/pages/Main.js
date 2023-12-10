@@ -1,5 +1,33 @@
-import React from "react";
-import "./Main.css"; 
+// import React, { useEffect, useState } from "react";
+// import axios from 'axios';
+// import "./Main.css";
+
+// // ... (Profile 컴포넌트는 그대로 유지)
+
+// function Main() {
+//   const [recentPosts, setRecentPosts] = useState([]);
+
+//   useEffect(() => {
+//     const fetchRecentPosts = async () => {
+//       try {
+//         const response = await axios.get('/api/board/category/create'); // 수정된 URL
+//         setRecentPosts(response.data);
+//       } catch (error) {
+//         console.error("최신 글 불러오기 실패:", error);
+//       }
+//     };
+
+//     fetchRecentPosts();
+//   }, []);
+
+//   // ... (나머지 코드 그대로 유지)
+// }
+
+// export default Main;
+
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import "./Main.css";
 
 function Profile({ imageSrc, text }) {
   return (
@@ -11,6 +39,21 @@ function Profile({ imageSrc, text }) {
 }
 
 function Main() {
+  const [recentPosts, setRecentPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchRecentPosts = async () => {
+      try {
+        const response = await axios.get('/api/freeboard/recent-posts');
+        setRecentPosts(response.data);
+      } catch (error) {
+        console.error("최신 글 불러오기 실패:", error);
+      }
+    };
+
+    fetchRecentPosts();
+  }, []);
+
   return (
     <div className="main-container">
       <h1 className="main-title">튜터찾고 대학가자!</h1>
@@ -30,6 +73,11 @@ function Main() {
         />
       </div>
       <h1 className="main-title">튜터링크 게시판 물어보세요!</h1>
+      <ul>
+        {recentPosts.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }

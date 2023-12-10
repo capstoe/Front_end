@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import axios from 'axios';
 import './SignUp.css';
-
-
+import DaumPostcode from 'react-daum-postcode';
 
 const SignUp = () => {
+  useEffect(() => {
+    // Daum 우편번호 서비스 스크립트 동적 로드
+    const script = document.createElement('script');
+    script.src = 'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    // 컴포넌트가 언마운트될 때 스크립트 정리
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   const [values, setValues] = useState({
     id: "",
     password: "",
@@ -18,13 +30,22 @@ const SignUp = () => {
     school: "",
     authCode: "",
     allConsent: false,
+    memberEmail: "",
+    zipCode: "",
+    address1: "",
+    address2: "",
+    selectedField: "",
   });
 
   const validationSchema = yup.object().shape({
     id: yup.string().required('아이디를 입력하세요').min(6, '아이디는 최소 6자 이상이어야 합니다').max(20),
     password: yup.string().required('비밀번호를 입력하세요').min(8, '비밀번호는 최소 8자 이상이어야 합니다').max(20).matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+|{}:"<>?,./;']+)/, "비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다."),
     password2: yup.string().required('비밀번호를 다시 입력하세요').oneOf([yup.ref('password'), null], '비밀번호가 일치하지 않습니다'),
-    name: yup.string().required('이름을 입력하세요')
+    name: yup.string().required('이름을 입력하세요'),
+    memberEmail: yup.string().email('올바른 이메일 주소를 입력하세요').required('이메일을 입력하세요'),
+    zipCode: yup.string().required('우편번호를 입력하세요'),
+    address1: yup.string().required('주소를 입력하세요'),
+    selectedField: yup.string().required('회원 유형을 선택하세요'),
   });
 
   useEffect(() => {
@@ -57,22 +78,20 @@ const SignUp = () => {
     setValues((prevValues) => ({ ...prevValues, [name]: checked }));
   };
 
-  const onSubmit = (values, { setErrors }) => {
-    const errors = {};
+  const onSubmit = async (values, { setErrors }) => {
+    try {
+      const response = await axios.post('/api/signup', values);
 
-    if (!values.id) {
-      errors.id = "아이디를 입력하세요";
-    } else if (values.id.length < 6 || values.id.length > 20) {
-      errors.id = "아이디는 최소 6자 이상이어야 합니다";
-    }
-
-    // 나머지 필드에 대한 유효성 검사 추가
-
-    if (Object.keys(errors).length > 0) {
-      setErrors(errors);
-    } else {
-      // 회원가입 로직 추가
-      console.log("회원가입 성공!", values);
+      if (response.status === 200) {
+        console.log("회원가입 성공!", response.data);
+        // 성공했을 때 처리 (예: 페이지 이동 등)
+      } else {
+        console.error("회원가입 실패:", response.data);
+        setErrors(response.data.errors);
+      }
+    } catch (error) {
+      console.error("회원가입 오류:", error);
+      setErrors({ general: "회원가입 중 오류가 발생했습니다." });
     }
   };
 
@@ -178,25 +197,49 @@ const SignUp = () => {
           <ErrorMessage name="school" component="div" className="error-message" />
         </div>
         <div>
-          <label htmlFor="phone">휴대폰 번호 인증</label>
-          <div>
-            <Field
-              type="text"
-              name="phone"
-              placeholder="휴대폰 번호를 입력 ('-' 제외 11자리 숫자만 입력)"
-              required
-            />
-            <button type="button" id="phone-auth-button">인증번호 요청</button>
-          </div>
-          <div>
-            <Field
-              type="text"
-              name="authCode"
-              placeholder="인증번호 입력"
-              required
-            />
-            <ErrorMessage name="authCode" component="div" className="error-message" />
-          </div>
+          <label htmlFor="zipCode">우편번호</label>
+          <Field
+            name="zipCode"
+            type="text"
+            placeholder="우편번호를 입력해주세요"
+            readOnly
+          />
+          <input type="button" value="검색" className="btn btn-yg" id="searchZipCode" />
+          <ErrorMessage name="zipCode" component="div" className="error-message" />
+        </div>
+        <div>
+          <label htmlFor="address1">주소</label>
+          <Field
+            name="address1"
+            type="text"
+            placeholder="주소를 입력해주세요"
+            readOnly
+          />
+          <ErrorMessage name="address1" component="div" className="error-message" />
+        </div>
+        <div>
+          <label htmlFor="address2">상세주소</label>
+          <Field
+            name="address2"
+            type="text"
+            placeholder="상세주소를 입력해주세요"
+          />
+          <ErrorMessage name="address2" component="div" className="error-message" />
+        </div>
+        <div>
+          <label htmlFor="selectedField">회원 유형</label>
+          <Field
+            name="selectedField"
+            as="select"
+          >
+            <option value="수시-논술">수시-논술</option>
+            <option value="수시-학생부종합전형">수시-학생부종합전형</option>
+            <option value="수시-교과">수시-교과</option>
+            <option value="수시-적성">수시-적성</option>
+            <option value="정시">정시</option>
+            <option value="정시-실기">정시-실기</option>
+          </Field>
+          <ErrorMessage name="selectedField" component="div" className="error-message" />
         </div>
         <div>
           <label>
@@ -245,7 +288,7 @@ const SignUp = () => {
                 required
               />
               <span>
-                (필수) 개인정보 취급방침 동의
+              (필수) 개인정보 취급방침 동의
               </span>
             </label>
           </div>
