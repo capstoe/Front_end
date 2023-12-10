@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { useEffect, useState } from "react";
 // import axios from 'axios';
 // import "./Main.css";
@@ -28,6 +29,10 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import "./Main.css";
+=======
+import React from "react";
+import "./Main.css"; 
+>>>>>>> origin/main
 
 function Profile({ imageSrc, text }) {
   return (
@@ -39,6 +44,7 @@ function Profile({ imageSrc, text }) {
 }
 
 function Main() {
+<<<<<<< HEAD
   const [recentPosts, setRecentPosts] = useState([]);
 
   useEffect(() => {
@@ -54,6 +60,8 @@ function Main() {
     fetchRecentPosts();
   }, []);
 
+=======
+>>>>>>> origin/main
   return (
     <div className="main-container">
       <h1 className="main-title">튜터찾고 대학가자!</h1>
@@ -73,11 +81,14 @@ function Main() {
         />
       </div>
       <h1 className="main-title">튜터링크 게시판 물어보세요!</h1>
+<<<<<<< HEAD
       <ul>
         {recentPosts.map((post) => (
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>
+=======
+>>>>>>> origin/main
     </div>
   );
 }

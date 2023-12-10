@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import "./TuteeSearch.css";
 function TuteeSearch({ searchTerm, setSearchTerm }) {
   const [keyword, setKeyword] = useState("");
@@ -6,6 +7,16 @@ function TuteeSearch({ searchTerm, setSearchTerm }) {
   const [subject, setSubject] = useState("");
   const [gender, setGender] = useState("");
 
+=======
+import './TuteeSearch.css';
+
+function TuteeSearch({ searchTerm, setSearchTerm }) {
+  const [keyword, setKeyword] = useState("");
+  const [location, setLocation] = useState("");
+  const [subject, setSubject] = useState("");
+  const [gender, setGender] = useState("");
+
+>>>>>>> origin/main
   return (
     <form className="TuteeSearchForm" onSubmit={(e) => {
       e.preventDefault();
